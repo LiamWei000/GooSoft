@@ -1,144 +1,294 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-  <!-- SEO -->
+  <!-- Primary Meta Tags -->
   <title>GooSoft — Open Source Creative Technology</title>
-  <meta name="description" content="GooSoft develops modular, open source creative technology that empowers creators worldwide." />
-  <meta name="keywords" content="GooSoft, Open Source, Creative Technology, Editor Platform, Modular Software" />
-  <meta name="author" content="Liam 伟 (AEIOU 05)" />
+  <meta name="description" content="GooSoft develops modular, open source creative technology that empowers creators worldwide.">
+  <meta name="keywords" content="GooSoft, Open Source, Creative Technology, Editor Platform, Modular Software">
+  <meta name="author" content="Liam Wei (AEIOU 05)">
+  <link rel="canonical" href="/" />
+  <meta name="theme-color" content="#0f1724">
 
   <!-- Open Graph -->
+  <meta property="og:type" content="website" />
   <meta property="og:title" content="GooSoft — Customize the Future" />
   <meta property="og:description" content="Empowering global creators through open source creative platforms." />
-  <meta property="og:type" content="website" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fallback favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2300BFA6'/%3E%3Ctext x='50' y='58' font-size='50' text-anchor='middle' fill='white' font-family='Arial, Helvetica, sans-serif'%3EG%3C/text%3E%3C/svg%3E">
+
+  <!-- Tailwind (dev CDN; for production compile and purge unused CSS) -->
+  <script src="https://cdn.tailwindcss.com" defer></script>
 
   <style>
+    :root { color-scheme: dark; }
     body {
-      background: radial-gradient(circle at top, #1A1A2E 0%, #0F0F1A 70%);
+      background: radial-gradient(circle at 10% 10%, #1A1A2E 0%, #0F0F1A 70%);
     }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+
+    /* Accessible focus styles using focus-visible */
+    :focus { outline: none; }
+    :focus:not(:focus-visible) { outline: none; box-shadow: none; }
+    :focus-visible {
+      outline: 3px solid rgba(0,191,166,0.24);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    /* Glass helper */
+    .glass { background-color: rgba(255,255,255,0.03); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+
+    /* Toast */
+    .toast { transform: translateY(8px); transition: opacity .18s ease, transform .18s ease; }
+    .toast-hidden { opacity: 0; pointer-events: none; transform: translateY(0); }
+    .toast-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
   </style>
 </head>
 
 <body class="text-white font-sans antialiased">
+  <!-- Skip link -->
+  <a class="sr-only focus:not-sr-only absolute left-4 top-4 bg-white/5 text-white px-3 py-2 rounded-md" href="#main">Skip to content</a>
 
-  <!-- Navigation -->
+  <!-- Header / Navigation -->
   <header class="fixed w-full top-0 z-50 backdrop-blur-md bg-black/30 border-b border-white/10">
-    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
-      <div class="text-xl font-bold text-[#00BFA6]">GooSoft</div>
-      <nav class="hidden md:flex space-x-6 text-sm">
-        <a href="#about" class="hover:text-[#00BFA6] transition">About</a>
-        <a href="#product" class="hover:text-[#00BFA6] transition">Product</a>
-        <a href="#contact" class="hover:text-[#00BFA6] transition">Contact</a>
-      </nav>
-    </div>
-  </header>
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
+      <a href="#home" class="flex items-center gap-3 text-xl font-bold text-[#00BFA6]" aria-label="GooSoft home">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden class="rounded-full shadow-sm">
+          <rect width="24" height="24" rx="6" fill="#00BFA6"></rect>
+          <text x="12" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#081019">G</text>
+        </svg>
+        <span class="sr-only sm:not-sr-only">GooSoft</span>
+      </a>
 
-  <!-- Hero -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24">
-    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-[#00BFA6] to-[#FFB800] bg-clip-text text-transparent">
-      Customize the Future
-    </h1>
-    <p class="text-lg md:text-xl text-gray-300 max-w-2xl mb-8">
-      GooSoft builds modular, open source creative platforms that empower individuals and communities to innovate without limits.
-    </p>
-    <a href="#about"
-       class="bg-[#00BFA6] hover:bg-[#00a18e] text-black font-semibold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-[#00BFA6]/40">
-       Explore GooSoft
-    </a>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="py-24 px-6 border-t border-white/10">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-4xl font-bold text-[#FFB800] mb-8">About GooSoft</h2>
-
-      <p class="text-gray-300 mb-6 leading-relaxed">
-        GooSoft is a global creative technology initiative founded by Liam 伟 (AEIOU 05).
-        Our mission is to build intuitive, modular, and open source editor platforms
-        that redefine digital creativity.
-      </p>
-
-      <div class="grid md:grid-cols-2 gap-12 mt-10">
-        <div>
-          <h3 class="text-2xl font-semibold mb-4 text-[#00BFA6]">Vision</h3>
-          <p class="text-gray-400 italic">
-            To become a global pioneer in open source creative technology that empowers innovation without boundaries.
-          </p>
-        </div>
-
-        <div>
-          <h3 class="text-2xl font-semibold mb-4 text-[#00BFA6]">Mission</h3>
-          <ul class="space-y-2 text-gray-400 list-disc list-inside">
-            <li>Develop modular and accessible editor platforms</li>
-            <li>Support global collaboration through open source principles</li>
-            <li>Empower creators from beginner to professional level</li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="mt-12 text-sm text-gray-500">
-        Founder & CEO — Liam 伟 • AEIOU 05
-      </p>
-    </div>
-  </section>
-
-  <!-- Product -->
-  <section id="product" class="py-24 px-6 border-t border-white/10">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-4xl font-bold text-[#FFB800] mb-10">Our Product</h2>
-
-      <div class="bg-white/5 backdrop-blur-lg p-10 rounded-2xl border border-white/10 shadow-xl">
-        <h3 class="text-3xl font-semibold mb-4 text-[#00BFA6]">GooSoft Verse</h3>
-        <p class="text-gray-300 mb-6 leading-relaxed">
-          GooSoft Verse is a next-generation modular creative engine designed
-          to give users full control over their digital workspace.
-          Built with scalability and openness in mind, it enables limitless customization.
-        </p>
-
-        <ul class="space-y-2 text-gray-400 mb-8">
-          <li>⚙️ Modular Core Architecture</li>
-          <li>🌍 Open Source Collaboration</li>
-          <li>🎨 Creative Editor Framework</li>
+      <!-- Desktop nav (semantic list) -->
+      <nav class="hidden md:flex gap-6 text-sm" aria-label="Primary navigation">
+        <ul class="flex items-center gap-6">
+          <li><a href="#about" class="hover:text-[#00BFA6] transition px-2">About</a></li>
+          <li><a href="#product" class="hover:text-[#00BFA6] transition px-2">Product</a></li>
+          <li><a href="#contact" class="hover:text-[#00BFA6] transition px-2">Contact</a></li>
         </ul>
+      </nav>
 
-        <button class="bg-[#FFB800] hover:bg-yellow-400 text-black py-3 px-8 rounded-full font-semibold transition shadow-md">
-          Coming Soon
+      <!-- Mobile controls -->
+      <div class="md:hidden">
+        <button id="nav-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="p-2 rounded-md">
+          <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
       </div>
     </div>
-  </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-24 px-6 border-t border-white/10 text-center">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-4xl font-bold text-[#00BFA6] mb-6">Contact</h2>
-      <p class="text-gray-300 mb-6">
-        Interested in collaboration or contributing to GooSoft?
-      </p>
-
-      <a href="mailto:goosoft.4101986@gmail.com"
-         class="text-[#FFB800] hover:underline text-lg">
-         goosoft.4101986@gmail.com
-      </a>
-
-      <div class="mt-8 space-x-6 text-sm text-gray-400">
-        <a href="#" class="hover:text-[#00BFA6] transition">Twitter</a>
-        <a href="#" class="hover:text-[#00BFA6] transition">Instagram</a>
-        <a href="#" class="hover:text-[#00BFA6] transition">YouTube</a>
+    <!-- Mobile menu (use aria-hidden and toggled hidden class) -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-white/5" aria-hidden="true">
+      <div class="px-6 py-4 flex flex-col gap-3" role="menu" aria-label="Mobile navigation">
+        <a role="menuitem" href="#about" class="py-2 rounded-md hover:bg-white/5">About</a>
+        <a role="menuitem" href="#product" class="py-2 rounded-md hover:bg-white/5">Product</a>
+        <a role="menuitem" href="#contact" class="py-2 rounded-md hover:bg-white/5">Contact</a>
       </div>
     </div>
-  </section>
+  </header>
+
+  <!-- Main -->
+  <main id="main" class="pt-24">
+    <!-- Hero -->
+    <section id="home" class="min-h-[70vh] flex flex-col justify-center items-center text-center px-6 py-14">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 bg-gradient-to-r from-[#00BFA6] to-[#FFB800] bg-clip-text text-transparent">
+        Customize the Future
+      </h1>
+
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
+        GooSoft builds modular, open source creative platforms that empower individuals and communities to innovate without limits.
+      </p>
+
+      <div class="flex gap-4">
+        <a href="#about" class="inline-flex items-center justify-center bg-[#00BFA6] hover:bg-[#00a18e] text-black font-semibold py-3 px-6 rounded-full transition duration-200 shadow-lg">Explore GooSoft</a>
+        <a href="#product" class="inline-flex items-center justify-center border border-white/10 text-white py-3 px-6 rounded-full hover:bg-white/5 transition">Learn more</a>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-20 px-6 border-t border-white/10">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#FFB800] mb-6">About GooSoft</h2>
+
+        <p class="text-gray-300 mb-6 leading-relaxed">
+          GooSoft is a global creative technology initiative founded by <strong>Liam Wei</strong> (AEIOU 05). Our mission is to build intuitive, modular, and open source editor platforms that redefine digital creativity.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-10 mt-8">
+          <div>
+            <h3 class="text-2xl font-semibold mb-3 text-[#00BFA6]">Vision</h3>
+            <p class="text-gray-400 italic">To become a global pioneer in open source creative technology that empowers innovation without boundaries.</p>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold mb-3 text-[#00BFA6]">Mission</h3>
+            <ul class="space-y-2 text-gray-400 list-disc list-inside">
+              <li>Develop modular and accessible editor platforms</li>
+              <li>Support global collaboration through open source principles</li>
+              <li>Empower creators from beginner to professional level</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="mt-10 text-sm text-gray-500">Founder &amp; CEO — Liam Wei • AEIOU 05</p>
+      </div>
+    </section>
+
+    <!-- Product -->
+    <section id="product" class="py-20 px-6 border-t border-white/10">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#FFB800] mb-6">Our Product</h2>
+
+        <div class="glass p-8 rounded-2xl border border-white/10 shadow-xl">
+          <h3 class="text-2xl md:text-3xl font-semibold mb-3 text-[#00BFA6]">GooSoft Verse</h3>
+          <p class="text-gray-300 mb-6 leading-relaxed">GooSoft Verse is a next-generation modular creative engine designed to give users full control over their digital workspace. Built with scalability and openness in mind, it enables limitless customization.</p>
+
+          <ul class="space-y-2 text-gray-400 mb-6">
+            <li>⚙️ Modular Core Architecture</li>
+            <li>🌍 Open Source Collaboration</li>
+            <li>🎨 Creative Editor Framework</li>
+          </ul>
+
+          <div class="flex gap-4">
+            <button class="bg-[#FFB800] hover:bg-yellow-400 text-black py-2 px-4 rounded-full font-semibold">Coming Soon</button>
+            <a href="#contact" class="py-2 px-4 rounded-full border border-white/10 hover:bg-white/5 transition">Get in touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 px-6 border-t border-white/10 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#00BFA6] mb-4">Contact</h2>
+        <p class="text-gray-300 mb-4">Interested in collaboration or contributing to GooSoft?</p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="mailto:goosoft.4101986@gmail.com" class="text-[#FFB800] hover:underline text-lg" rel="noopener">goosoft.4101986@gmail.com</a>
+
+          <!-- Simple contact form (progressive enhancement) -->
+          <form id="contact-form" class="w-full sm:w-auto flex gap-2 mt-3 sm:mt-0" onsubmit="submitContact(event)" novalidate>
+            <label for="name" class="sr-only">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" class="px-3 py-2 rounded-lg bg-white/3 placeholder-gray-400" required>
+
+            <label for="email" class="sr-only">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" class="px-3 py-2 rounded-lg bg-white/3 placeholder-gray-400" required>
+
+            <label for="message" class="sr-only">Message</label>
+            <input id="message" name="message" type="text" placeholder="Short message (optional)" class="px-3 py-2 rounded-lg bg-white/3 placeholder-gray-400">
+
+            <button type="submit" class="px-4 py-2 rounded-lg bg-[#00BFA6] text-black font-semibold">Send</button>
+          </form>
+        </div>
+
+        <div class="mt-6 space-x-6 text-sm text-gray-400">
+          <a href="#" class="hover:text-[#00BFA6]" rel="noopener">Twitter</a>
+          <a href="#" class="hover:text-[#00BFA6]" rel="noopener">Instagram</a>
+          <a href="#" class="hover:text-[#00BFA6]" rel="noopener">YouTube</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="text-center py-8 text-sm text-gray-600 border-t border-white/10">
-    <p>© 2026 GooSoft. All Rights Reserved.</p>
+  <footer class="text-center py-8 text-sm text-gray-400 border-t border-white/10">
+    <p>© <span id="year"></span> GooSoft. All Rights Reserved.</p>
     <p class="mt-2">Create Anything. Control Everything.</p>
   </footer>
 
+  <!-- Small ARIA live region for toast messages -->
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 toast toast-hidden bg-white/6 px-4 py-3 rounded-md text-sm text-white"></div>
+
+  <noscript>
+    <div class="fixed bottom-4 right-4 bg-white/5 text-white px-4 py-2 rounded-md text-sm">This site works better with JavaScript enabled.</div>
+  </noscript>
+
+  <script>
+    (function () {
+      const navToggle = document.getElementById('nav-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-open');
+      const iconClose = document.getElementById('icon-close');
+      const toast = document.getElementById('toast');
+
+      // mobile menu toggle with ARIA
+      if (navToggle) {
+        navToggle.addEventListener('click', function () {
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', String(!expanded));
+          mobileMenu.classList.toggle('hidden');
+          mobileMenu.setAttribute('aria-hidden', String(expanded));
+          iconOpen.classList.toggle('hidden');
+          iconClose.classList.toggle('hidden');
+        });
+
+        // close on ESC
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            navToggle.setAttribute('aria-expanded', 'false');
+            iconOpen.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+          }
+        });
+      }
+
+      // helper toast
+      function showToast(message, ms = 3000) {
+        toast.textContent = message;
+        toast.classList.remove('toast-hidden');
+        toast.classList.add('toast-visible');
+        setTimeout(() => {
+          toast.classList.remove('toast-visible');
+          toast.classList.add('toast-hidden');
+        }, ms);
+      }
+
+      // contact form handler: opens mail client with properly encoded body (progressive enhancement)
+      window.submitContact = function (e) {
+        e.preventDefault();
+        const name = (document.getElementById('name') || {}).value?.trim() || '';
+        const email = (document.getElementById('email') || {}).value?.trim() || '';
+        const message = (document.getElementById('message') || {}).value?.trim() || '';
+
+        // basic client-side validation
+        if (!name || !email) {
+          showToast('Please provide your name and email.');
+          return;
+        }
+        // safe newline usage then encodeURIComponent once
+        const bodyText = `Hello,
+
+I am ${name} (${email}).
+
+${message ? message + '\n\n' : ''}Regards,
+${name}`;
+        const subject = `GooSoft Contact — ${name}`;
+        const mailto = `mailto:goosoft.4101986@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+
+        // open mail client (fallback progressive enhancement)
+        window.location.href = mailto;
+        showToast('Opening your mail client…');
+      };
+
+      // footer year
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
